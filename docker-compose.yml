@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  gamesite-backend:
+    image: gamesite-backend:1.0
+    volumes:
+      - ./data:/var/www/data
+    environment:
+      - GAMESITE_DB_HOST=gamesite-postgres
+      - GAMESITE_DB_DATABASE=gamesite
+      - GAMESITE_DB_PASSWORD=qwerty
+      - GAMESITE_DB_PORT=5432
+      - GAMESITE_DB_USERNAME=postgres
+      - GAMESITE_JWT_EXPIREIN=1h
+      - GAMESITE_JWT_SECRET=example
+      - GAMESITE_SMTP_FROM=
+      - GAMESITE_SMTP_HOST=
+      - GAMESITE_SMTP_PASSWORD=
+      - GAMESITE_SMTP_PORT=465
+      - GAMESITE_SMTP_SECURE=1
+      - GAMESITE_SMTP_USER=
+    depends_on:
+      - gamesite-postgres
+    hostname: gamesite-backend
+    networks:
+      - gamesite-network
+
+  gamesite-frontend:
+    image: gamesite-frontend:1.0
+    environment:
+      -  DANGEROUSLY_DISABLE_HOST_CHECK=true
+    depends_on:
+        - gamesite-backend
+    hostname: gamesite-frontend
+    networks:
+      - gamesite-network
+  gamesite-postgres:
+    image: postgres:latest
+    environment:
+        - POSTGRES_DB=gamesite
+        - POSTGRES_PORT=5432
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=qwerty
+    hostname: gamesite-postgres
+    networks:
+      - gamesite-network
+
+networks:
+  gamesite-network:
+    driver: bridge
