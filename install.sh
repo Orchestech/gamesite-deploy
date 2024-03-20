@@ -1,5 +1,9 @@
 git clone https://github.com/Orchestech/gamesite-backend
 git clone https://github.com/Orchestech/gamesite-frontend
+git reset --hard gamesite-backend/.
+git reset --hard gamesite-frontend/.
+git pull gamesite-backend/.
+git pull gamesite-frontend/.
 
 echo "REACT_APP_APIURL=https://gamesite.weirdcat.su" > gamesite-frontend/.env
 
