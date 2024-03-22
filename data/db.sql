@@ -9,14 +9,14 @@
 -- 
 -- object: gamesite | type: DATABASE --
 -- DROP DATABASE IF EXISTS gamesite;
-CREATE DATABASE gamesite
-	OWNER = postgres;
+--CREATE DATABASE gamesite
+--	OWNER = postgres;
 -- ddl-end --
 
 
 -- object: gamesite | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS gamesite CASCADE;
-CREATE SCHEMA gamesite;
+CREATE SCHEMA IF NOT EXISTS gamesite;
 -- ddl-end --
 ALTER SCHEMA gamesite OWNER TO postgres;
 -- ddl-end --
@@ -26,7 +26,7 @@ SET search_path TO pg_catalog,public,gamesite;
 
 -- object: public.users_id_seq | type: SEQUENCE --
 -- DROP SEQUENCE IF EXISTS public.users_id_seq CASCADE;
-CREATE SEQUENCE public.users_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.users_id_seq
 	INCREMENT BY 1
 	MINVALUE -2147483648
 	MAXVALUE 2147483647
@@ -39,7 +39,7 @@ CREATE SEQUENCE public.users_id_seq
 
 -- object: public.activationkeys_id_seq | type: SEQUENCE --
 -- DROP SEQUENCE IF EXISTS public.activationkeys_id_seq CASCADE;
-CREATE SEQUENCE public.activationkeys_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.activationkeys_id_seq
 	INCREMENT BY 1
 	MINVALUE -2147483648
 	MAXVALUE 2147483647
@@ -52,7 +52,7 @@ CREATE SEQUENCE public.activationkeys_id_seq
 
 -- object: public.suspensions_id_seq | type: SEQUENCE --
 -- DROP SEQUENCE IF EXISTS public.suspensions_id_seq CASCADE;
-CREATE SEQUENCE public.suspensions_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.suspensions_id_seq
 	INCREMENT BY 1
 	MINVALUE -2147483648
 	MAXVALUE 2147483647
@@ -65,7 +65,7 @@ CREATE SEQUENCE public.suspensions_id_seq
 
 -- object: public.queuetesters_id_seq | type: SEQUENCE --
 -- DROP SEQUENCE IF EXISTS public.queuetesters_id_seq CASCADE;
-CREATE SEQUENCE public.queuetesters_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.queuetesters_id_seq
 	INCREMENT BY 1
 	MINVALUE -2147483648
 	MAXVALUE 2147483647
@@ -78,7 +78,7 @@ CREATE SEQUENCE public.queuetesters_id_seq
 
 -- object: public.activetesters_id_seq | type: SEQUENCE --
 -- DROP SEQUENCE IF EXISTS public.activetesters_id_seq CASCADE;
-CREATE SEQUENCE public.activetesters_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.activetesters_id_seq
 	INCREMENT BY 1
 	MINVALUE -2147483648
 	MAXVALUE 2147483647
@@ -91,7 +91,7 @@ CREATE SEQUENCE public.activetesters_id_seq
 
 -- object: public.downloadlinks_id_seq | type: SEQUENCE --
 -- DROP SEQUENCE IF EXISTS public.downloadlinks_id_seq CASCADE;
-CREATE SEQUENCE public.downloadlinks_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.downloadlinks_id_seq
 	INCREMENT BY 1
 	MINVALUE -2147483648
 	MAXVALUE 2147483647
@@ -104,7 +104,7 @@ CREATE SEQUENCE public.downloadlinks_id_seq
 
 -- object: public.profiles_id_seq | type: SEQUENCE --
 -- DROP SEQUENCE IF EXISTS public.profiles_id_seq CASCADE;
-CREATE SEQUENCE public.profiles_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.profiles_id_seq
 	INCREMENT BY 1
 	MINVALUE -2147483648
 	MAXVALUE 2147483647
@@ -117,7 +117,7 @@ CREATE SEQUENCE public.profiles_id_seq
 
 -- object: public.activetesters | type: TABLE --
 -- DROP TABLE IF EXISTS public.activetesters CASCADE;
-CREATE TABLE public.activetesters (
+CREATE TABLE IF NOT EXISTS public.activetesters (
 	id integer NOT NULL DEFAULT nextval('public.activetesters_id_seq'::regclass),
 	user_id serial,
 	CONSTRAINT activetesters_pk PRIMARY KEY (id),
@@ -129,7 +129,7 @@ ALTER TABLE public.activetesters OWNER TO postgres;
 
 -- object: public.users | type: TABLE --
 -- DROP TABLE IF EXISTS public.users CASCADE;
-CREATE TABLE public.users (
+CREATE TABLE IF NOT EXISTS public.users (
 	id integer NOT NULL DEFAULT nextval('public.users_id_seq'::regclass),
 	username text,
 	password text NOT NULL,
@@ -146,7 +146,7 @@ ALTER TABLE public.users OWNER TO postgres;
 
 -- object: public.profiles | type: TABLE --
 -- DROP TABLE IF EXISTS public.profiles CASCADE;
-CREATE TABLE public.profiles (
+CREATE TABLE IF NOT EXISTS public.profiles (
 	id integer NOT NULL DEFAULT nextval('public.profiles_id_seq'::regclass),
 	user_id serial NOT NULL,
 	first_name text,
@@ -161,7 +161,7 @@ ALTER TABLE public.profiles OWNER TO postgres;
 
 -- object: public.queuetesters | type: TABLE --
 -- DROP TABLE IF EXISTS public.queuetesters CASCADE;
-CREATE TABLE public.queuetesters (
+CREATE TABLE IF NOT EXISTS public.queuetesters (
 	id integer NOT NULL DEFAULT nextval('public.queuetesters_id_seq'::regclass),
 	user_id serial,
 	"from" bigint NOT NULL,
@@ -177,7 +177,7 @@ ALTER TABLE public.queuetesters OWNER TO postgres;
 
 -- object: public.downloadlinks | type: TABLE --
 -- DROP TABLE IF EXISTS public.downloadlinks CASCADE;
-CREATE TABLE public.downloadlinks (
+CREATE TABLE IF NOT EXISTS public.downloadlinks (
 	id integer NOT NULL DEFAULT nextval('public.downloadlinks_id_seq'::regclass),
 	activetester_id serial NOT NULL,
 	link text NOT NULL,
@@ -193,7 +193,7 @@ ALTER TABLE public.downloadlinks OWNER TO postgres;
 
 -- object: public.activationkeys | type: TABLE --
 -- DROP TABLE IF EXISTS public.activationkeys CASCADE;
-CREATE TABLE public.activationkeys (
+CREATE TABLE IF NOT EXISTS public.activationkeys (
 	id integer NOT NULL DEFAULT nextval('public.activationkeys_id_seq'::regclass),
 	user_id serial NOT NULL,
 	key text NOT NULL,
@@ -209,7 +209,7 @@ ALTER TABLE public.activationkeys OWNER TO postgres;
 
 -- object: public.suspensions | type: TABLE --
 -- DROP TABLE IF EXISTS public.suspensions CASCADE;
-CREATE TABLE public.suspensions (
+CREATE TABLE IF NOT EXISTS public.suspensions (
 	id integer NOT NULL DEFAULT nextval('public.suspensions_id_seq'::regclass),
 	user_id serial,
 	by_user_id serial NOT NULL,
