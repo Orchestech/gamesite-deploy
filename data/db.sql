@@ -223,53 +223,53 @@ CREATE TABLE IF NOT EXISTS public.suspensions (
 ALTER TABLE public.suspensions OWNER TO postgres;
 -- ddl-end --
 
--- object: fk_activetesters_user_id_users | type: CONSTRAINT --
--- ALTER TABLE public.activetesters DROP CONSTRAINT IF EXISTS fk_activetesters_user_id_users CASCADE;
-ALTER TABLE public.activetesters ADD CONSTRAINT fk_activetesters_user_id_users FOREIGN KEY (user_id)
-REFERENCES public.users (id) MATCH SIMPLE
-ON DELETE NO ACTION ON UPDATE NO ACTION;
--- ddl-end --
-
--- object: fk_profiles_user_id_users | type: CONSTRAINT --
--- ALTER TABLE public.profiles DROP CONSTRAINT IF EXISTS fk_profiles_user_id_users CASCADE;
-ALTER TABLE public.profiles ADD CONSTRAINT fk_profiles_user_id_users FOREIGN KEY (user_id)
-REFERENCES public.users (id) MATCH SIMPLE
-ON DELETE NO ACTION ON UPDATE NO ACTION;
--- ddl-end --
-
--- object: fk_queuetesters_user_id_users | type: CONSTRAINT --
--- ALTER TABLE public.queuetesters DROP CONSTRAINT IF EXISTS fk_queuetesters_user_id_users CASCADE;
-ALTER TABLE public.queuetesters ADD CONSTRAINT fk_queuetesters_user_id_users FOREIGN KEY (user_id)
-REFERENCES public.users (id) MATCH SIMPLE
-ON DELETE NO ACTION ON UPDATE NO ACTION;
--- ddl-end --
-
--- object: fk_downloadlinks_activetester_id_activetesters | type: CONSTRAINT --
--- ALTER TABLE public.downloadlinks DROP CONSTRAINT IF EXISTS fk_downloadlinks_activetester_id_activetesters CASCADE;
-ALTER TABLE public.downloadlinks ADD CONSTRAINT fk_downloadlinks_activetester_id_activetesters FOREIGN KEY (activetester_id)
-REFERENCES public.activetesters (user_id) MATCH SIMPLE
-ON DELETE NO ACTION ON UPDATE NO ACTION;
--- ddl-end --
-
--- object: fk_activationkeys_user_id_users | type: CONSTRAINT --
--- ALTER TABLE public.activationkeys DROP CONSTRAINT IF EXISTS fk_activationkeys_user_id_users CASCADE;
-ALTER TABLE public.activationkeys ADD CONSTRAINT fk_activationkeys_user_id_users FOREIGN KEY (user_id)
-REFERENCES public.users (id) MATCH SIMPLE
-ON DELETE NO ACTION ON UPDATE NO ACTION;
--- ddl-end --
-
--- object: fk_suspensions_user_id_users | type: CONSTRAINT --
--- ALTER TABLE public.suspensions DROP CONSTRAINT IF EXISTS fk_suspensions_user_id_users CASCADE;
-ALTER TABLE public.suspensions ADD CONSTRAINT fk_suspensions_user_id_users FOREIGN KEY (user_id)
-REFERENCES public.users (id) MATCH SIMPLE
-ON DELETE NO ACTION ON UPDATE NO ACTION;
--- ddl-end --
-
--- object: fk_suspensions_by_user_id_users | type: CONSTRAINT --
--- ALTER TABLE public.suspensions DROP CONSTRAINT IF EXISTS fk_suspensions_by_user_id_users CASCADE;
-ALTER TABLE public.suspensions ADD CONSTRAINT fk_suspensions_by_user_id_users FOREIGN KEY (by_user_id)
-REFERENCES public.users (id) MATCH SIMPLE
-ON DELETE NO ACTION ON UPDATE NO ACTION;
--- ddl-end --
+-- -- object: fk_activetesters_user_id_users | type: CONSTRAINT --
+-- -- ALTER TABLE public.activetesters DROP CONSTRAINT IF EXISTS fk_activetesters_user_id_users CASCADE;
+-- ALTER TABLE public.activetesters ADD CONSTRAINT fk_activetesters_user_id_users FOREIGN KEY (user_id)
+-- REFERENCES public.users (id) MATCH SIMPLE
+-- ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- -- ddl-end --
+--
+-- -- object: fk_profiles_user_id_users | type: CONSTRAINT --
+-- -- ALTER TABLE public.profiles DROP CONSTRAINT IF EXISTS fk_profiles_user_id_users CASCADE;
+-- ALTER TABLE public.profiles ADD CONSTRAINT fk_profiles_user_id_users FOREIGN KEY (user_id)
+-- REFERENCES public.users (id) MATCH SIMPLE
+-- ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- -- ddl-end --
+--
+-- -- object: fk_queuetesters_user_id_users | type: CONSTRAINT --
+-- -- ALTER TABLE public.queuetesters DROP CONSTRAINT IF EXISTS fk_queuetesters_user_id_users CASCADE;
+-- ALTER TABLE public.queuetesters ADD CONSTRAINT fk_queuetesters_user_id_users FOREIGN KEY (user_id)
+-- REFERENCES public.users (id) MATCH SIMPLE
+-- ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- -- ddl-end --
+--
+-- -- object: fk_downloadlinks_activetester_id_activetesters | type: CONSTRAINT --
+-- -- ALTER TABLE public.downloadlinks DROP CONSTRAINT IF EXISTS fk_downloadlinks_activetester_id_activetesters CASCADE;
+-- ALTER TABLE public.downloadlinks ADD CONSTRAINT fk_downloadlinks_activetester_id_activetesters FOREIGN KEY (activetester_id)
+-- REFERENCES public.activetesters (user_id) MATCH SIMPLE
+-- ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- -- ddl-end --
+--
+-- -- object: fk_activationkeys_user_id_users | type: CONSTRAINT --
+-- -- ALTER TABLE public.activationkeys DROP CONSTRAINT IF EXISTS fk_activationkeys_user_id_users CASCADE;
+-- ALTER TABLE public.activationkeys ADD CONSTRAINT fk_activationkeys_user_id_users FOREIGN KEY (user_id)
+-- REFERENCES public.users (id) MATCH SIMPLE
+-- ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- -- ddl-end --
+--
+-- -- object: fk_suspensions_user_id_users | type: CONSTRAINT --
+-- -- ALTER TABLE public.suspensions DROP CONSTRAINT IF EXISTS fk_suspensions_user_id_users CASCADE;
+-- ALTER TABLE public.suspensions ADD CONSTRAINT fk_suspensions_user_id_users FOREIGN KEY (user_id)
+-- REFERENCES public.users (id) MATCH SIMPLE
+-- ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- -- ddl-end --
+--
+-- -- object: fk_suspensions_by_user_id_users | type: CONSTRAINT --
+-- -- ALTER TABLE public.suspensions DROP CONSTRAINT IF EXISTS fk_suspensions_by_user_id_users CASCADE;
+-- ALTER TABLE public.suspensions ADD CONSTRAINT fk_suspensions_by_user_id_users FOREIGN KEY (by_user_id)
+-- REFERENCES public.users (id) MATCH SIMPLE
+-- ON DELETE NO ACTION ON UPDATE NO ACTION;
+-- -- ddl-end --
 
 
